@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     <div id="app">
+    <!---
     {% for post in posts %}
         <article class="post">
             <time class="date">
@@ -11,5 +12,6 @@
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </article>
     {% endfor %}
+    !-->
     </div>
 {% endblock %}

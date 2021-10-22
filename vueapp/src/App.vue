@@ -1,46 +1,12 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <div v-for="post in posts" :key="post.title">
-      <h1>{{post.title}}</h1>
-      <p>{{post.text}}</p>
-      <p>{{post.published_date}}</p>
-      {{post}}
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">Abouts</router-link>
     </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data() {
-    return {
-      posts: []
-    }
-  },
-  mounted() {
-    this.getPosts()
-  },
-  methods: {
-    async getPosts() {
-      await axios.get('http://127.0.0.1:8000/posts/')
-      .then(response => {
-        this.posts = response.data
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    }
-  }
-}
-</script>
 
 <style>
 #app {
@@ -49,6 +15,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
