@@ -5,6 +5,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Post(models.Model):
+    id = models.IntegerField(primary_key=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()

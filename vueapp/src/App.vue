@@ -5,8 +5,18 @@
       <router-link to="/about">Abouts</router-link>
     </div>
     <router-view/>
+    <div v-for="post in data" :key="post.id">
+      <p>{{post}}</p>
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'app',
+  props: ['data']
+}
+</script>
 
 <style>
 #app {

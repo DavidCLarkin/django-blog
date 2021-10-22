@@ -1,17 +1,22 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <div id="app">
-    <!---
-    {% for post in posts %}
-        <article class="post">
-            <time class="date">
-                {{ post.published_date }}
-            </time>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
-        </article>
-    {% endfor %}
-    !-->
-    </div>
+<!--{% with data=posts %}
+<div>
+    <app data="{{ data }}">Hi</app>
+</div>
+{% endwith %} -->
+<div>
+    <app data="{{ posts }}">Hi</app>
+</div>
+{% for post in posts %}
+    <article class="post">
+        <time class="date">
+            {{ post.published_date }}
+        </time>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+    </article>
+{% endfor %}
+
 {% endblock %}
