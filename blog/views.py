@@ -1,7 +1,15 @@
+from django.http.response import Http404
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
+from rest_framework.serializers import Serializer
+from rest_framework.decorators import api_view
+from blog import serializers
+
+from blog.serializers import PostSerializer
 from .models import Post
 from .forms import CommentForm, PostForm, Comment
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -12,6 +20,25 @@ def post_list(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post':post} )
+
+class PostDetail(APIView):
+    def get_object(self, title):
+        try:
+            return Post.objects.get(title=title)
+        except Post.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, title, format=None):
+        post = self.get_object(title)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def all(request):
+    posts = Post.objects.all().order_by('published_date')
+    serializer = PostSerializer(posts, many=True)
+    return Response(serializer.data)
 
 @login_required
 def post_new(request):
