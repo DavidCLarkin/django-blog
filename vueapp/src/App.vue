@@ -5,6 +5,8 @@
     <div v-for="post in posts" :key="post.title">
       <h1>{{post.title}}</h1>
       <p>{{post.text}}</p>
+      <p>{{post.published_date}}</p>
+      {{post}}
     </div>
   </div>
 </template>
@@ -28,7 +30,6 @@ export default {
   },
   methods: {
     async getPosts() {
-      console.log('getting posts')
       await axios.get('http://127.0.0.1:8000/posts/')
       .then(response => {
         this.posts = response.data
