@@ -6,7 +6,6 @@
     </div>
     <router-view/>
     <div v-for="post in data" :key="post.id">
-      <p>{{post}}</p>
     </div>
   </div>
 </template>

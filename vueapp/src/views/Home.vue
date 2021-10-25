@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="post in datas" :key="post.title">
+    <div v-for="post in posts" :key="post.title">
       <h1>{{post.title}}</h1>
       <p>{{post.text}}</p>
       <p>{{post.published_date}}</p>
@@ -16,7 +16,7 @@ import axios from 'axios'
 axios.defaults.baseURL = "http://127.0.0.1:8000/"
 
 export default {
-  name: 'App',
+  name: 'Home',
   props: ['datas'],
   components: {
     

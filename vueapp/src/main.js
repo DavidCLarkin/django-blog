@@ -1,5 +1,6 @@
 import App from './App.vue'
-//import Home from './views/Home.vue'
+import Post from './views/Post.vue'
+import Home from './views/Home.vue'
 //import Vue from 'vue'
 import router from './router'
 import Vue from 'vue/dist/vue.js'
@@ -18,4 +19,14 @@ new Vue({
 new Vue({
   el: "app",
   components: {App}
+});
+
+new Vue({
+  el: "post",
+  components:{Post}
+});
+
+new Vue({
+  el: "home",
+  components: {Home}
 })
