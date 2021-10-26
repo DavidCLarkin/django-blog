@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--
     <div v-for="post in posts" :key="post.title">
       <h1>{{post.title}}</h1>
       <p>{{post.text}}</p>
@@ -7,6 +8,7 @@
       <p>{{data ? data : 'empty'}}</p>
       <a :href="`http://127.0.0.1:8000/post/${post.id}`">Link</a>
     </div>
+    !-->
     <a href="http://127.0.0.1:8000/accounts/login">Log In</a>
   </div>
 </template>

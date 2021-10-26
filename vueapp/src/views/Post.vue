@@ -12,3 +12,9 @@ export default {
     props: ['id','title','text', 'published_date', 'author']
 }
 </script>
+
+<style scoped>
+#post {
+    background-color: aqua;
+}
+</style>
